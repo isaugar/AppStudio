@@ -52,6 +52,8 @@ unidad_seleccionada = st.sidebar.selectbox("Elige la Unidad:", unidades_disponib
 
 preguntas_filtradas = [p for p in todas_las_preguntas if p["materia"] == materia_seleccionada and p["unidad"] == unidad_seleccionada]
 
+# NUEVO: Selector de cantidad de preguntas
+st.sidebar.markdown("---")
 max_preguntas = len(preguntas_filtradas)
 
 opciones_cantidad = ["Todas"] + [n for n in [5, 10, 15, 20, 30, 50, 100] if n < max_preguntas]
@@ -60,16 +62,6 @@ cantidad_seleccionada = st.sidebar.selectbox(
     options=opciones_cantidad,
     key="cantidad_preguntas"
 )
-
-# NUEVO: Reproductor de música de YouTube
-st.sidebar.markdown("---")
-st.sidebar.header("🎧 Música para estudiar")
-
-# Puedes cambiar este enlace por el del vídeo o lista de YouTube que tú quieras
-st.sidebar.audio("music.webm", format="audio/webm")
-
-# NUEVO: Selector de cantidad de preguntas
-st.sidebar.markdown("---")
 
 # 5. Lógica del Test y Estado de la Sesión
 if 'indice' not in st.session_state:
